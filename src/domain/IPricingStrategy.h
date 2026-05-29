@@ -1,12 +1,15 @@
 #pragma once
 
-#include "CommodityType.h"
+#include "Commodity.h"
 #include "PlanetType.h"
 
-class IPricingStrategy
+namespace sm
 {
-public:
-    virtual ~IPricingStrategy() = default;
+    class IPricingStrategy
+    {
+    public:
+        virtual ~IPricingStrategy() = default;
 
-    virtual int calculatePrice(CommodityType cmdty_type, PlanetType planet, float dist) const = 0;
-};
+        virtual int calculatePrice(Commodity cmdty_type, PlanetType planet, float dist) const = 0;
+    };
+}

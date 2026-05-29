@@ -8,9 +8,14 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 add_executable(StellarMerchant
     main.cpp
     README.md
-    src/domain/CommodityType.h
+    src/domain/Commodity.h
     src/domain/PlanetType.h
     src/domain/IPricingStrategy.h
+    src/domain/GameStatus.h
+    src/domain/Result.h
+    src/entities/Cargo.h
+    src/entities/Ship.h
+    src/entities/Player.h
 )
 
 target_include_directories(StellarMerchant PRIVATE

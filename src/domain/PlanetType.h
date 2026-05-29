@@ -1,10 +1,13 @@
 #pragma once
 
-enum class PlanetType
+namespace sm
 {
-    Agricultural,
-    Industrial,
-    Capital,
-    Mining,
-    Technological,
-};
+    enum class PlanetType
+    {
+        Agricultural,
+        Industrial,
+        Capital,
+        Mining,
+        Technological,
+    };
+}
