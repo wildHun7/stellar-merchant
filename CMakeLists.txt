@@ -16,6 +16,10 @@ add_executable(StellarMerchant
     src/entities/Cargo.h
     src/entities/Ship.h
     src/entities/Player.h
+    src/entities/Market.h
+    src/entities/Planet.h
+    src/entities/StarSystem.h
+    src/domain/Position.h
 )
 
 target_include_directories(StellarMerchant PRIVATE

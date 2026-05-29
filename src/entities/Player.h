@@ -7,7 +7,7 @@ namespace sm
     class Player
     {
     public:
-        Player(float ship_limit);
+        explicit Player(float ship_limit);
 
         // Ship
         [[nodiscard]] const Ship& getShip() const;
