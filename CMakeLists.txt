@@ -20,6 +20,10 @@ add_executable(StellarMerchant
     src/entities/Planet.h
     src/entities/StarSystem.h
     src/domain/Position.h
+    src/map/Edge.h
+    src/map/Galaxy.h
+    src/map/IMapGenerator.h
+    src/map/RandomMapGenerator.h
 )
 
 target_include_directories(StellarMerchant PRIVATE
