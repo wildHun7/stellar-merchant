@@ -8,6 +8,7 @@ namespace sm
     class RandomMapGenerator : public IMapGenerator
     {
     public:
+        ~RandomMapGenerator() = default;
 
         Galaxy generateGalaxy(int system_count, unsigned int seed) const override;
 

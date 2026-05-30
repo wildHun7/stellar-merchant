@@ -2,7 +2,7 @@
 
 #include "domain/Commodity.h"
 #include "domain/PlanetType.h"
-#include "domain/IPricingStrategy.h"
+#include "pricing/IPricingStrategy.h"
 #include <unordered_map>
 
 namespace sm

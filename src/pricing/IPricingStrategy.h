@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Commodity.h"
-#include "PlanetType.h"
+#include "domain/Commodity.h"
+#include "domain/PlanetType.h"
 
 namespace sm
 {

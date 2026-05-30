@@ -10,7 +10,7 @@ add_executable(StellarMerchant
     README.md
     src/domain/Commodity.h
     src/domain/PlanetType.h
-    src/domain/IPricingStrategy.h
+
     src/domain/GameStatus.h
     src/domain/Result.h
     src/entities/Cargo.h
@@ -27,6 +27,8 @@ add_executable(StellarMerchant
     src/systems/TravelSystem.h
     src/systems/TradeSystem.h
     src/systems/IEventSystem.h
+    src/pricing/StandardPricing.h
+    src/pricing/IPricingStrategy.h
 )
 
 target_include_directories(StellarMerchant PRIVATE
