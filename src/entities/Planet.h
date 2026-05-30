@@ -20,7 +20,7 @@ namespace sm
     private:
         std::string m_planet_name;
         PlanetType m_planet_type;
-        Market m_market;
+        Market m_planet_market;
 
     };
 }

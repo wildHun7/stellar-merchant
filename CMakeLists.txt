@@ -29,6 +29,13 @@ add_executable(StellarMerchant
     src/systems/IEventSystem.h
     src/pricing/StandardPricing.h
     src/pricing/IPricingStrategy.h
+    src/core/GameState.h
+    src/core/GameLoop.h
+    src/io/Command.h
+    src/io/IRenderer.h
+    src/io/IInputHandler.h
+    src/io/TerminalRender.h
+    src/io/TerminalInput.h
 )
 
 target_include_directories(StellarMerchant PRIVATE
