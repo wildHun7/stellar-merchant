@@ -20,12 +20,11 @@ A space trading simulation game written in C++20.
 
 ## 🗂️ Project Structure (Current)
 
-* `src/domain/` – Core game logic, types, and domain models (e.g., `CommodityType`).
-* `src/entities/` – Game entities (Cargo, Ship, Market, Player, Planet, StarSystem)
-* `src/map/` – Galaxy graph, edges and map generation (Galaxy, Edge, IMapGenerator)
-* `src/systems/` – Business logic (TravelSystem, TradeSystem, IEventSystem)
+* `src/domain/` – Core types and contracts (enums, interfaces, structs)
+* `src/entities/` – Player entities (Player, Ship, Cargo)
+* `src/world/` – Game world (Planet, StarSystem, Galaxy, Market, Edge, map generation)
+* `src/systems/` – Business logic (TravelSystem, TradeSystem, EventSystem)
 * `src/pricing/` – Pricing strategy interface and implementation
-* `src/core/` – Game state and main loop (in progress)
-* `src/io/` – Input/output interfaces (in progress)
+* `src/core/` – Game state and main loop (GameState, GameLoop)
+* `src/io/` – Input/output interfaces (TerminalRenderer, TerminalInput)
 * `main.cpp` – Application entry point
-* `main.cpp` – Application entry point.
