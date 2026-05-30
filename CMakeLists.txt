@@ -24,6 +24,9 @@ add_executable(StellarMerchant
     src/map/Galaxy.h
     src/map/IMapGenerator.h
     src/map/RandomMapGenerator.h
+    src/systems/TravelSystem.h
+    src/systems/TradeSystem.h
+    src/systems/IEventSystem.h
 )
 
 target_include_directories(StellarMerchant PRIVATE
