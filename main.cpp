@@ -1,9 +1,10 @@
-#include <QCoreApplication>
+#include <iostream>
 
-int main(int argc, char *argv[])
+int main()
 {
-    QCoreApplication a(argc, argv);
-
+    std::cout << "Stellar Merchant\n";
+    return 0;
+}
     // Set up code that uses the Qt event loop here.
     // Call a.quit() or a.exit() to quit the application.
     // A not very useful example would be including
@@ -15,5 +16,4 @@ int main(int argc, char *argv[])
     // If you do not need a running Qt event loop, remove the call
     // to a.exec() or use the Non-Qt Plain C++ Application template.
 
-    return a.exec();
-}
+

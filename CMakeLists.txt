@@ -7,35 +7,33 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_executable(StellarMerchant
     main.cpp
-    README.md
-    src/domain/Commodity.h
-    src/domain/PlanetType.h
-
-    src/domain/GameStatus.h
-    src/domain/Result.h
-    src/entities/Cargo.h
-    src/entities/Ship.h
-    src/entities/Player.h
-    src/entities/Market.h
-    src/entities/Planet.h
-    src/entities/StarSystem.h
-    src/domain/Position.h
-    src/map/Edge.h
-    src/map/Galaxy.h
-    src/map/IMapGenerator.h
-    src/map/RandomMapGenerator.h
-    src/systems/TravelSystem.h
-    src/systems/TradeSystem.h
-    src/systems/IEventSystem.h
-    src/pricing/StandardPricing.h
-    src/pricing/IPricingStrategy.h
-    src/core/GameState.h
-    src/core/GameLoop.h
-    src/io/Command.h
-    src/io/IRenderer.h
-    src/io/IInputHandler.h
-    src/io/TerminalRender.h
-    src/io/TerminalInput.h
+        src/domain/Commodity.h
+        src/domain/PlanetType.h
+        src/domain/GameStatus.h
+        src/domain/Result.h
+        src/domain/Position.h
+        src/entities/Cargo.h
+        src/entities/Ship.h
+        src/entities/Player.h
+        src/world/Market.h
+        src/world/Planet.h
+        src/world/StarSystem.h
+        src/world/Edge.h
+        src/world/Galaxy.h
+        src/world/IMapGenerator.h
+        src/world/RandomMapGenerator.h
+        src/systems/TravelSystem.h
+        src/systems/TradeSystem.h
+        src/systems/IEventSystem.h
+        src/pricing/StandardPricing.h
+        src/pricing/IPricingStrategy.h
+        src/core/GameState.h
+        src/core/GameLoop.h
+        src/io/Command.h
+        src/io/IRenderer.h
+        src/io/IInputHandler.h
+        src/io/TerminalRenderer.h
+        src/io/TerminalInput.h
 )
 
 target_include_directories(StellarMerchant PRIVATE
