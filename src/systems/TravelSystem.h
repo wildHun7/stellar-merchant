@@ -2,7 +2,7 @@
 
 #include "domain/Result.h"
 #include "entities/Player.h"
-#include "map/Galaxy.h"
+#include "world/Galaxy.h"
 #include <vector>
 
 namespace sm

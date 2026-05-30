@@ -2,7 +2,7 @@
 
 #include "domain/GameStatus.h"
 #include "entities/Player.h"
-#include "map/Galaxy.h"
+#include "world/Galaxy.h"
 
 namespace sm
 {

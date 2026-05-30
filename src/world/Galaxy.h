@@ -1,6 +1,6 @@
 #pragma once
 
-#include "entities/StarSystem.h"
+#include "StarSystem.h"
 #include "Edge.h"
 #include <vector>
 #include <unordered_map>

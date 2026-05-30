@@ -1,9 +1,9 @@
 #pragma once
 
-// #include "map/Galaxy.h"
+// #include "world/Galaxy.h"
 // #include "entities/Player.h"
 #include "core/GameState.h"
-#include "entities/Market.h"
+#include "world/Market.h"
 #include "domain/Result.h"
 
 namespace sm

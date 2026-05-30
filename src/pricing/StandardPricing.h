@@ -1,6 +1,8 @@
 #pragma once
 
 #include "IPricingStrategy.h"
+#include "domain/Commodity.h"
+#include "domain/PlanetType.h"
 //#include <random>
 
 namespace sm

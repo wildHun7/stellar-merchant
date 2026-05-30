@@ -1,6 +1,9 @@
 #pragma once
 
 #include "IRenderer.h"
+#include "core/GameState.h"
+#include "world/Market.h"
+#include "domain/Result.h"
 
 namespace sm
     {
