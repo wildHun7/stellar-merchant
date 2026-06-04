@@ -1,7 +1,7 @@
 #pragma once
 
 #include "StarSystem.h"
-#include "Edge.h"
+#include "map/Edge.h"
 #include <vector>
 #include <unordered_map>
 

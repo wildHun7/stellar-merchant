@@ -3,13 +3,21 @@
 #include "domain/GameStatus.h"
 #include "entities/Player.h"
 #include "world/Galaxy.h"
+#include "context/IContext.h"
+#include "io/IInputHandler.h"
+#include "io/IRenderer.h"
+#include <memory>
 
 namespace sm
 {
-    class GameState
+    class GameSession
     {
     public:
-        GameState(Galaxy galaxy, Player player, GameStatus game_status);
+        explicit GameSession(Galaxy galaxy, Player player, IRenderer& renderer, IInputHandler& handler);
+
+        void run();
+        [[nodiscard]] bool isRunning() const;
+        void switchContext(std::unique_ptr<IContext> context);
 
         [[nodiscard]] const Galaxy& getGalaxy() const;
         [[nodiscard]] Galaxy& getGalaxy();
@@ -30,6 +38,9 @@ namespace sm
         Galaxy m_galaxy;
         Player m_player;
         GameStatus m_game_status;
+        std::unique_ptr<IContext> m_context;
+        IRenderer& m_renderer;
+        IInputHandler& m_handler;
         int m_current_system_id;
         int m_turn;
     };
