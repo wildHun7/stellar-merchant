@@ -9,10 +9,10 @@
 
 namespace sm
 {
-    class GameLoop
+    class GameApp
     {
     public:
-        explicit GameLoop(std::unique_ptr<IRenderer> renderer, std::unique_ptr<IInputHandler> input);
+        explicit GameApp(std::unique_ptr<IRenderer> renderer, std::unique_ptr<IInputHandler> input);
 
         void run();
 
