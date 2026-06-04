@@ -12,7 +12,7 @@ add_executable(StellarMerchant
         src/context/CityContext.h
         src/context/TravelContext.h
 
-        src/core/GameLoop.h
+        src/core/GameApp.h
         src/core/session/MenuSession.h
         src/core/session/GameSession.h
 
@@ -46,7 +46,6 @@ add_executable(StellarMerchant
         src/world/map/IMapGenerator.h
         src/world/map/RandomMapGenerator.h
         src/world/map/Edge.h
-
 
 )
 
