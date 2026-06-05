@@ -21,6 +21,7 @@ add_executable(StellarMerchant
         src/domain/GameStatus.h
         src/domain/Result.h
         src/domain/Position.h
+        src/domain/ShipType.h
 
         src/entities/Cargo.h
         src/entities/Ship.h
@@ -46,7 +47,9 @@ add_executable(StellarMerchant
         src/world/map/IMapGenerator.h
         src/world/map/RandomMapGenerator.h
         src/world/map/Edge.h
+
         src/entities/Cargo.cpp
+        src/entities/Ship.cpp
 
 )
 

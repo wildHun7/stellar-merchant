@@ -48,7 +48,7 @@ namespace sm
         namespace rv = std::ranges::views;
 
         auto cargo_mass_view = m_stored_cargo
-        | rv::transform([](const auto& pair){       // cargo key = cmdty
+        | rv::transform([](const auto& pair){                                   // cargo key = cmdty
             return getCommodityInfo(pair.first).mass_per_unit * pair.second;    // mass_per_unit * qty
         });
 
