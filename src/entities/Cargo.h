@@ -12,9 +12,9 @@ namespace sm
 
         // Commodity
         [[nodiscard]] const std::unordered_map<Commodity, int>& getItems() const { return m_stored_cargo; }
-        [[nodiscard]] bool addCommodity(Commodity type, int quantity);
-        [[nodiscard]] bool removeCommodity(Commodity type, int quantity);
-        [[nodiscard]] int getQuantity(Commodity type) const;
+        [[nodiscard]] int getQuantity(Commodity cmdty_type) const;
+        [[nodiscard]] bool addCommodity(Commodity cmdty_type, int quantity);
+        [[nodiscard]] bool removeCommodity(Commodity cmdty_type, int quantity);
 
         // Mass
         [[nodiscard]] float getCurrentMass() const;

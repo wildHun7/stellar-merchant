@@ -46,6 +46,7 @@ add_executable(StellarMerchant
         src/world/map/IMapGenerator.h
         src/world/map/RandomMapGenerator.h
         src/world/map/Edge.h
+        src/entities/Cargo.cpp
 
 )
 

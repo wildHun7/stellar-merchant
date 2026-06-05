@@ -35,9 +35,9 @@ namespace sm
 
     constexpr const CommodityInfo& getCommodityInfo(Commodity type)
     {
-        for(const auto& info : kCommodities){
-            if(info.type == type)
-                return info;
+        for(const auto& cmdty_info : kCommodities){
+            if(cmdty_info.type == type)
+                return cmdty_info;
         }
 
     return kCommodities[0]; // nigdy nie dojdziemy tutaj

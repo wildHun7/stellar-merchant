@@ -1,3 +1,4 @@
 *.user*
 build/
 .qtc_clangd/
+.qtcreator/
