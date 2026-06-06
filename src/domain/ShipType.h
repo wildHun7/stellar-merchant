@@ -7,9 +7,9 @@ namespace sm
 {
     enum class ShipType
     {
-    Shuttle,
-    Freighter,
-    Interceptor
+        Shuttle,
+        Freighter,
+        Interceptor
     };
 
     struct ShipInfo

@@ -50,6 +50,7 @@ add_executable(StellarMerchant
 
         src/entities/Cargo.cpp
         src/entities/Ship.cpp
+        src/entities/Player.cpp
 
 )
 
