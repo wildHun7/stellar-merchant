@@ -10,7 +10,7 @@ namespace sm
     class Planet
     {
     public:
-        explicit Planet(std::string_view planet_name, PlanetType planet_type, Market market);
+        explicit Planet(std::string_view planet_name, PlanetType planet_type, Market planet_market);
 
         [[nodiscard]] const std::string& getName() const;
         [[nodiscard]] PlanetType getType() const;

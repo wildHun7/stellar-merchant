@@ -11,7 +11,7 @@ namespace sm
     class StarSystem
     {
     public:
-        explicit StarSystem(int ID, std::string_view sys_name, Position xy, std::vector<Planet> planet_list);
+        explicit StarSystem(int id, std::string_view sys_name, Position xy, std::vector<Planet> planet_list);
 
         [[nodiscard]] int getId() const;
         [[nodiscard]] const std::string& getName() const;
