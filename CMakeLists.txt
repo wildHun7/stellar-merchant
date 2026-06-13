@@ -52,6 +52,8 @@ add_executable(StellarMerchant
         src/entities/Ship.cpp
         src/entities/Player.cpp
 
+        src/world/Market.cpp
+
 )
 
 target_include_directories(StellarMerchant PRIVATE
