@@ -20,5 +20,6 @@ namespace sm
     private:
         std::vector<StarSystem> m_star_sys_list;
         std::unordered_map<int, std::vector<Edge>> m_galaxy_adjacency_map;
+        int m_capital_id;
     };
 }

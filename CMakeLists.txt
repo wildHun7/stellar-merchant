@@ -55,6 +55,7 @@ add_executable(StellarMerchant
         src/world/Market.cpp
         src/world/Planet.cpp
         src/world/StarSystem.cpp
+        src/world/Galaxy.cpp
 
 )
 
