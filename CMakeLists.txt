@@ -56,6 +56,8 @@ add_executable(StellarMerchant
         src/world/Planet.cpp
         src/world/StarSystem.cpp
         src/world/Galaxy.cpp
+        src/world/map/RandomMapGenerator.cpp
+
 
 )
 

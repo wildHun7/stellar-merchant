@@ -39,4 +39,27 @@ namespace sm
     {
         return m_capital_id;
     }
+
+    void Galaxy::addSystem(StarSystem system)
+    {
+        m_star_sys_list.emplace_back(std::move(system));
+    }
+
+    void Galaxy::addEdge(int from_id, int to_id, float cost)
+    {
+        auto& edges = m_galaxy_adjacency_map[from_id];
+        auto exists = std::ranges::find_if(edges,
+            [to_id](const Edge& e) { return e.target_system_id == to_id; });
+
+        if(exists == edges.end())
+        {
+            m_galaxy_adjacency_map[from_id].emplace_back(to_id, cost);
+            m_galaxy_adjacency_map[to_id].emplace_back(from_id, cost);
+        }
+    }
+
+    void Galaxy::setCapitalId(int id)
+    {
+        m_capital_id = id;
+    }
 }

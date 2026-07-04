@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Galaxy.h"
+#include "world/Galaxy.h"
 
 namespace sm
 {
