@@ -52,6 +52,8 @@ add_executable(StellarMerchant
         src/entities/Ship.cpp
         src/entities/Player.cpp
 
+        src/pricing/StandardPricing.cpp
+
         src/world/Market.cpp
         src/world/Planet.cpp
         src/world/StarSystem.cpp

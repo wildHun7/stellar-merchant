@@ -5,8 +5,8 @@ namespace sm
     enum class PlanetType
     {
         Agricultural,
-        Industrial,
         Capital,
+        Industrial,
         Mining,
         Technological,
     };
