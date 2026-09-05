@@ -28,6 +28,11 @@ namespace sm
         return m_cargo.removeCommodity(cmdty_type, quantity);
     }
 
+    int Ship::getQuantity(Commodity cmdty_type) const
+    {
+        return m_cargo.getQuantity(cmdty_type);
+    }
+
     // Fuel
 
     int Ship::getFuelAmount() const

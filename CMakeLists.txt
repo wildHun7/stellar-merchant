@@ -55,13 +55,13 @@ add_executable(StellarMerchant
         src/pricing/StandardPricing.cpp
 
         src/systems/TravelSystem.cpp
+        src/systems/TradeSystem.cpp
 
         src/world/Market.cpp
         src/world/Planet.cpp
         src/world/StarSystem.cpp
         src/world/Galaxy.cpp
         src/world/map/RandomMapGenerator.cpp
-
 
 )
 

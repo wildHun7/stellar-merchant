@@ -14,6 +14,7 @@ namespace sm
         // Commodity
         [[nodiscard]] bool addCommodity(Commodity cmdty_type, int quantity);
         [[nodiscard]] bool removeCommodity(Commodity cmdty_type, int quantity);
+        [[nodiscard]] int getQuantity(Commodity cmdty_type) const;
 
         // Fuel
         [[nodiscard]] int getFuelAmount() const;
