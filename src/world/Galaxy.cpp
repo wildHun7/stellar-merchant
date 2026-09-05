@@ -27,6 +27,11 @@ namespace sm
         return *it;
     }
 
+    int Galaxy::getSystemCount() const
+    {
+        return static_cast<int>(m_star_sys_list.size());
+    }
+
     const std::vector<Edge>& Galaxy::getNeighbours(int sys_id) const
     {
         auto it = m_galaxy_adjacency_map.find(sys_id);
@@ -45,7 +50,7 @@ namespace sm
         m_star_sys_list.emplace_back(std::move(system));
     }
 
-    void Galaxy::addEdge(int from_id, int to_id, float cost)
+    void Galaxy::addEdge(int from_id, int to_id, float dist)
     {
         auto& edges = m_galaxy_adjacency_map[from_id];
         auto exists = std::ranges::find_if(edges,
@@ -53,8 +58,8 @@ namespace sm
 
         if(exists == edges.end())
         {
-            m_galaxy_adjacency_map[from_id].emplace_back(to_id, cost);
-            m_galaxy_adjacency_map[to_id].emplace_back(from_id, cost);
+            m_galaxy_adjacency_map[from_id].emplace_back(to_id, dist);
+            m_galaxy_adjacency_map[to_id].emplace_back(from_id, dist);
         }
     }
 

@@ -14,6 +14,7 @@ namespace sm
 
         [[nodiscard]] StarSystem& getSystem(int id);
         [[nodiscard]] const StarSystem& getSystem(int id) const;
+        [[nodiscard]] int getSystemCount() const;
         [[nodiscard]] const std::vector<Edge>& getNeighbours(int sys_id) const;
         [[nodiscard]] int getCapitalID() const;
 

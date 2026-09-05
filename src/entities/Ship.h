@@ -18,6 +18,7 @@ namespace sm
         // Fuel
         [[nodiscard]] int getFuelAmount() const;
         [[nodiscard]] bool consumeFuel(int amount);
+        [[nodiscard]] float getFuelConsumption() const;
 
         // Mass
         [[nodiscard]] float getAvailableMass() const;

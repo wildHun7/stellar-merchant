@@ -40,6 +40,11 @@ namespace sm
         return m_cargo.removeCommodity(Commodity::Deuterium, amount);
     }
 
+    float Ship::getFuelConsumption() const
+    {
+        return m_fuel_consumption;
+    }
+
     // Mass
 
     float Ship::getAvailableMass() const

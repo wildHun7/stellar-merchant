@@ -54,6 +54,8 @@ add_executable(StellarMerchant
 
         src/pricing/StandardPricing.cpp
 
+        src/systems/TravelSystem.cpp
+
         src/world/Market.cpp
         src/world/Planet.cpp
         src/world/StarSystem.cpp
