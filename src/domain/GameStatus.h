@@ -6,6 +6,7 @@ namespace sm
     {
         Playing,
         Won,
-        Lost
+        Lost,
+        Quit
     };
 }

@@ -11,6 +11,7 @@ add_executable(StellarMerchant
         src/context/IContext.h
         src/context/CityContext.h
         src/context/TravelContext.h
+        src/context/QuitContext.h
 
         src/core/GameApp.h
         src/core/session/MenuSession.h
@@ -48,6 +49,9 @@ add_executable(StellarMerchant
         src/world/map/RandomMapGenerator.h
         src/world/map/Edge.h
 
+        src/context/CityContext.cpp
+        src/context/TravelContext.cpp
+
         src/entities/Cargo.cpp
         src/entities/Ship.cpp
         src/entities/Player.cpp
@@ -62,6 +66,8 @@ add_executable(StellarMerchant
         src/world/StarSystem.cpp
         src/world/Galaxy.cpp
         src/world/map/RandomMapGenerator.cpp
+
+
 
 )
 

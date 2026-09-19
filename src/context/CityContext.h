@@ -14,7 +14,7 @@ namespace sm
         explicit CityContext(Planet& planet, IRenderer& renderer, IInputHandler& input);
         ~CityContext() = default;
 
-        std::unique_ptr<IContext> update(Player& player, Galaxy& galaxy) override;
+        std::unique_ptr<IContext> update(Player& player, Galaxy& galaxy, int current_system_id) override;
         std::vector<Command> getAvailableActions() const override;
 
     private:

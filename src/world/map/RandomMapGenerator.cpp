@@ -19,7 +19,7 @@ namespace sm
             float y = pos_dist(gen);
 
             //TODO: generate planets for each system
-            StarSystem system(i, std::format("System_{}", i), Position{x, y}, {});
+            StarSystem system(i, std::format("System_{}", i), Position{x, y}, {}); //
 
             galaxy.addSystem(std::move(system));
         }
