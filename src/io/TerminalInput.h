@@ -9,12 +9,11 @@ namespace sm
     public:
         ~TerminalInput() = default;
 
-        Command getCommand() override;
+        Command getCommand() const override;
         virtual int getSystemId() const override;
         virtual Commodity getCommodity() const override;
         virtual int getQuantity() const override;
-
-    private:
+        virtual ShipType getShipType() const override;
 
     };
 }

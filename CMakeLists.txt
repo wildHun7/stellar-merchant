@@ -52,6 +52,10 @@ add_executable(StellarMerchant
         src/context/CityContext.cpp
         src/context/TravelContext.cpp
 
+        src/core/session/GameSession.cpp
+        src/core/session/MenuSession.cpp
+        src/core/GameApp.cpp
+
         src/entities/Cargo.cpp
         src/entities/Ship.cpp
         src/entities/Player.cpp
@@ -66,8 +70,6 @@ add_executable(StellarMerchant
         src/world/StarSystem.cpp
         src/world/Galaxy.cpp
         src/world/map/RandomMapGenerator.cpp
-
-
 
 )
 

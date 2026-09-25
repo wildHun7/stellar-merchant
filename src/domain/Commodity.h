@@ -46,4 +46,4 @@ namespace sm
     // throw std::invalid_argument(
     //     std::format("Unknown CommodityType ID: {}", static_cast<int>(type))
     }
-} // namespace sm
+}

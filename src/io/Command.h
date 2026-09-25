@@ -9,6 +9,7 @@ namespace sm
         Sell,
         Map,
         Help,
+        NewGame,
         Quit
     };
 }

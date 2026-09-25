@@ -18,6 +18,10 @@ namespace sm
 
         [[nodiscard]] MenuOption run();
 
+    private:
+        IRenderer& m_renderer;
+        IInputHandler& m_input_handler;
+
     };
 
 }

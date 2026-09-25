@@ -13,7 +13,7 @@ namespace sm
     class GameSession
     {
     public:
-        explicit GameSession(Galaxy galaxy, Player player, IRenderer& renderer, IInputHandler& handler);
+        explicit GameSession(Galaxy galaxy, Player player, IRenderer& renderer, IInputHandler& input_handler);
 
         void run();
         [[nodiscard]] bool isRunning() const;
@@ -25,7 +25,7 @@ namespace sm
         [[nodiscard]] const Player& getPlayer() const;
         [[nodiscard]] Player& getPlayer();
 
-        [[nodiscard]] GameStatus getGameStatus();
+        [[nodiscard]] GameStatus getGameStatus() const;
         void setGameStatus(GameStatus game_status);
 
         [[nodiscard]] int getCurrentSystemId() const;
@@ -40,7 +40,7 @@ namespace sm
         GameStatus m_game_status;
         std::unique_ptr<IContext> m_context;
         IRenderer& m_renderer;
-        IInputHandler& m_handler;
+        IInputHandler& m_input_handler;
         int m_current_system_id;
         int m_turn;
     };

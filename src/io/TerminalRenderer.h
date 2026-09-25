@@ -1,7 +1,6 @@
 #pragma once
 
 #include "IRenderer.h"
-#include "core/session/GameSession.h"
 #include "world/Market.h"
 #include "domain/Result.h"
 
@@ -12,9 +11,10 @@ namespace sm
     public:
         ~TerminalRenderer() = default;
 
-        void renderGameState(const GameSession& state) const override;
-        void renderMarket(const Market& market) const override;
-        void renderMessage(const Result& result) const override;
+        virtual void renderState(const Player& player, const Galaxy& galaxy, int current_system_id) const override;
+        virtual void renderMarket(const Market& market) const override;
+        virtual void renderMessage(const Result& result) const override;
+        virtual void renderMenu() const override;
 
     private:
 

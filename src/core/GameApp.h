@@ -17,11 +17,13 @@ namespace sm
         void run();
 
     private:
+        std::unique_ptr<IRenderer> m_renderer;
+        std::unique_ptr<IInputHandler> m_input_handler;
+
         MenuSession m_menu_session;
         std::optional<GameSession> m_game_session;
         // std::optional<WorldSession> m_world_session; TODO
 
-        std::unique_ptr<IRenderer> m_renderer;
-        std::unique_ptr<IInputHandler> m_input_handler;
+
     };
 }
