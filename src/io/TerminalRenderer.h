@@ -15,6 +15,7 @@ namespace sm
         virtual void renderMarket(const Market& market) const override;
         virtual void renderMessage(const Result& result) const override;
         virtual void renderMenu() const override;
+        virtual void renderAvailableActions(const std::vector<Command>& actions) const override;
 
     private:
 

@@ -9,7 +9,7 @@ namespace sm
     public:
         ~TerminalInput() = default;
 
-        Command getCommand() const override;
+        virtual Command getCommand() const override;
         virtual int getSystemId() const override;
         virtual Commodity getCommodity() const override;
         virtual int getQuantity() const override;

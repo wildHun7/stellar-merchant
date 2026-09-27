@@ -60,6 +60,9 @@ add_executable(StellarMerchant
         src/entities/Ship.cpp
         src/entities/Player.cpp
 
+        src/io/TerminalInput.cpp
+        src/io/TerminalRenderer.cpp
+
         src/pricing/StandardPricing.cpp
 
         src/systems/TravelSystem.cpp

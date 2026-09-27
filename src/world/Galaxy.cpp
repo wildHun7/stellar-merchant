@@ -27,6 +27,12 @@ namespace sm
         return *it;
     }
 
+    const std::vector<StarSystem>& Galaxy::getStarSystems() const
+    {
+        return m_star_sys_list;
+    }
+
+
     int Galaxy::getSystemCount() const
     {
         return static_cast<int>(m_star_sys_list.size());

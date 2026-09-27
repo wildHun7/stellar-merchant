@@ -8,19 +8,26 @@ namespace sm
     Galaxy RandomMapGenerator::generateGalaxy(int system_count, unsigned int seed) const
     {
         std::mt19937 gen(seed);
-        std::uniform_real_distribution<float> pos_dist(0.0f, 1000.0f);
+
+        //std::uniform_real_distribution<float> pos_dist(0.0f, 1000.0f);
+
+        constexpr float MAP_WIDTH  = 60.0f;
+        constexpr float MAP_HEIGHT = 10.0f;
+        std::uniform_real_distribution<float> pos_x(0.0f, MAP_WIDTH);
+        std::uniform_real_distribution<float> pos_y(0.0f, MAP_HEIGHT);
 
         Galaxy galaxy;
 
         // generate solar systems
         for(int i = 0; i < system_count; ++i)
         {
-            float x = pos_dist(gen);
-            float y = pos_dist(gen);
+            // float x = pos_dist(gen);
+            // float y = pos_dist(gen);
 
-            //TODO: generate planets for each system
-            StarSystem system(i, std::format("System_{}", i), Position{x, y}, {}); //
+            float x = pos_x(gen);
+            float y = pos_y(gen);
 
+            StarSystem system(i, std::format("System_{}", i), Position{x, y}, {}); // TODO: generate planets for each system
             galaxy.addSystem(std::move(system));
         }
 
@@ -55,7 +62,7 @@ namespace sm
         }
 
         // set Capital
-        Position center{500.0f, 500.0f};
+        Position center{30.0f, 5.0f};
         int capital_id = 0;
         float max_dist = 0.0f;
 
