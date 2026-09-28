@@ -22,15 +22,15 @@ A space trading simulation game written in C++20.
 
 ```text
 src/
-├── context/         # Execution contexts handling current player environment
-│   └── events/      # Event-driven architecture (IEventSystem, TravelEvent)
-├── core/            # High-level application controller and main game loop
-│   └── session/     # State machine for application sessions (GameSession, MenuSession)
-├── domain/          # Core types, enums, and shared contracts (e.g., Commodity, ShipType)
-├── entities/        # Domain models representing game actors (Player, Ship, Cargo)
-├── io/              # Input/Output layer, UI rendering, and hardware abstractions
-├── pricing/         # Economic strategies and price calculation algorithms
-├── systems/         # Pure business logic and state managers (TravelSystem, TradeSystem)
-└── world/           # Environment representation and space geography
-    └── map/         # Map generation algorithms & data structures (IMapGenerator, Edge)
-main.cpp             # Application entry point
+├── core/            # Application orchestrator and main game loop (GameApp)
+│   └── session/     # Game and menu sessions (GameSession, MenuSession)
+├── context/         # Player state machine (CityContext, TravelContext)
+├── systems/         # Game mechanics and transaction logic
+├── pricing/         # Price calculation strategies (StandardPricing)
+├── world/           # Game world — planets, star systems, galaxy
+│   └── map/         # Procedural map generation (RandomMapGenerator)
+├── entities/        # Player, Ship, Cargo
+├── domain/          # Core types and contracts (e. g. Commodity, ShipType, Result)
+└── io/              # Terminal-based UI 
+main.cpp             # Entry point — wires dependencies and starts GameApp
+```
