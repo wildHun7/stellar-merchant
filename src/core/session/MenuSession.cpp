@@ -11,9 +11,9 @@ namespace sm
     MenuOption MenuSession::run()
     {
         m_renderer.renderMenu();
-        Command cmd = m_input_handler.getCommand();
+        MenuOption cmd = m_input_handler.getMenuOption();
 
-        if (cmd == Command::NewGame)
+        if (cmd == MenuOption::NewGame)
             return MenuOption::NewGame;
 
         return MenuOption::Quit;

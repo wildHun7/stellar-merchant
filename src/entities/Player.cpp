@@ -2,8 +2,10 @@
 
 namespace sm
 {
-    Player::Player(Ship ship) : m_ship(std::move(ship))
-    {}
+    Player::Player(Ship ship)
+    :   m_ship(std::move(ship))
+    ,   m_credits(1000.0f)
+    {   }
 
     // Ship
 

@@ -9,6 +9,8 @@ namespace sm
 {
     void TerminalRenderer::renderState(const Player& player, const Galaxy& galaxy, int current_system_id) const
     {
+        system("cls");
+
         // Player Stats
         std::cout << std::format(
             "STELLAR MERCHANT - \n" // TODO Turn {}
@@ -97,7 +99,7 @@ namespace sm
 
     void TerminalRenderer::renderMenu() const
     {
-        std::cout << "\033[H\033[2J";
+        system("cls");
 
         std::cout << std::format(
             "═══════════════════════════════════\n"

@@ -2,6 +2,12 @@
 
 namespace sm
 {
+    enum class MenuOption
+    {
+        NewGame,
+        Quit
+    };
+
     enum class Command
     {
         Travel,

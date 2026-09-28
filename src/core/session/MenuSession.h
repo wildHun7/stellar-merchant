@@ -2,14 +2,10 @@
 
 #include "io/IInputHandler.h"
 #include "io/IRenderer.h"
+#include "io/Command.h"
 
 namespace sm
 {
-    enum class MenuOption
-    {
-        NewGame,
-        Quit
-    };
 
     class MenuSession
     {

@@ -1,8 +1,17 @@
-#include <iostream>
+#include "core/GameApp.h"
+#include "io/TerminalRenderer.h"
+#include "io/TerminalInput.h"
+#include <windows.h>
 
 int main()
 {
-    std::cout << "Stellar Merchant\n";
+    SetConsoleOutputCP(CP_UTF8); // set UTF-8 in windows terminal
+    SetConsoleCP(CP_UTF8);
+    sm::GameApp app(
+        std::make_unique<sm::TerminalRenderer>(),
+        std::make_unique<sm::TerminalInput>()
+        );
+    app.run();
     return 0;
 }
     // Set up code that uses the Qt event loop here.

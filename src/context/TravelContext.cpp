@@ -4,6 +4,11 @@
 
 namespace sm
 {
+    TravelContext::TravelContext(IRenderer& renderer, IInputHandler& input)
+        : m_renderer(renderer)
+        , m_input(input)
+    {   }
+
     std::unique_ptr<IContext> TravelContext::update(Player& player, Galaxy& galaxy, int current_system_id)
     {
         m_renderer.renderState(player, galaxy, current_system_id);

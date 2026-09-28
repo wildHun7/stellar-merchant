@@ -7,7 +7,7 @@ namespace sm
         int target_system_id;
         float distance;
 
-        bool operator>(Edge& other) const
+        bool operator>(const Edge& other) const
         {
             return distance > other.distance;
         }

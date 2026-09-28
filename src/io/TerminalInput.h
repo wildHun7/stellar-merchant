@@ -9,6 +9,7 @@ namespace sm
     public:
         ~TerminalInput() = default;
 
+        virtual MenuOption getMenuOption() const override;
         virtual Command getCommand() const override;
         virtual int getSystemId() const override;
         virtual Commodity getCommodity() const override;

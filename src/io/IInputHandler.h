@@ -11,6 +11,7 @@ namespace sm
     public:
         virtual ~IInputHandler() = default;
 
+        virtual MenuOption getMenuOption() const = 0;
         virtual Command getCommand() const = 0;
         virtual int getSystemId() const = 0;
         virtual Commodity getCommodity() const = 0;

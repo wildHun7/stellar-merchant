@@ -8,6 +8,18 @@
 
 namespace sm
 {
+
+    MenuOption TerminalInput::getMenuOption() const
+    {
+        std::cout << "  Your choice [n-New Game, q-Quit]: ";
+        std::string choice;
+        std::cin >> choice;
+
+        if (choice == "n" || choice == "newgame")
+            return MenuOption::NewGame;
+        return MenuOption::Quit;
+    }
+
     Command TerminalInput::getCommand() const
     {
         std::string prompt = std::format("  Your choice [{}-Travel, {}-Buy, {}-Sell, {}-Quit]: ", 1, 2, 3, "q");
