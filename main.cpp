@@ -1,19 +1,16 @@
-#include "core/GameApp.h"
-#include "io/TerminalRenderer.h"
-#include "io/TerminalInput.h"
-#include <windows.h>
+#include <QApplication>
+#include "io/GameWindow.h"
 
-int main()
+int main(int argc, char* argv[])
 {
-    SetConsoleOutputCP(CP_UTF8); // set UTF-8 in windows terminal
-    SetConsoleCP(CP_UTF8);
-    sm::GameApp app(
-        std::make_unique<sm::TerminalRenderer>(),
-        std::make_unique<sm::TerminalInput>()
-        );
-    app.run();
-    return 0;
+    QApplication app(argc, argv);
+
+    sm::GameWindow window;
+    window.show();
+
+    return app.exec();
 }
+
     // Set up code that uses the Qt event loop here.
     // Call a.quit() or a.exit() to quit the application.
     // A not very useful example would be including

@@ -5,8 +5,14 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-add_executable(StellarMerchant
-    main.cpp
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTORCC ON)
+
+find_package(Qt6 REQUIRED COMPONENTS Core Widgets)
+
+add_executable(StellarMerchant WIN32
+main.cpp
 
         src/context/IContext.h
         src/context/CityContext.h
@@ -33,6 +39,7 @@ add_executable(StellarMerchant
         src/io/IInputHandler.h
         src/io/TerminalRenderer.h
         src/io/TerminalInput.h
+        src/io/GameWindow.h
 
         src/pricing/StandardPricing.h
         src/pricing/IPricingStrategy.h
@@ -73,9 +80,18 @@ add_executable(StellarMerchant
         src/world/StarSystem.cpp
         src/world/Galaxy.cpp
         src/world/map/RandomMapGenerator.cpp
+        src/io/GameWindow.cpp
+        src/io/QtInputHandler.h
+        src/io/QtInputHandler.cpp
 
 )
 
 target_include_directories(StellarMerchant PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
+)
+
+target_link_libraries(StellarMerchant
+    PRIVATE
+        Qt6::Core
+        Qt6::Widgets
 )
