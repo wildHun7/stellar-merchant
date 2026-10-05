@@ -29,10 +29,6 @@ add_executable(StellarMerchant
         src/entities/Player.h
 
         src/io/Command.h
-        src/io/IRenderer.h
-        src/io/IInputHandler.h
-        src/io/TerminalRenderer.h
-        src/io/TerminalInput.h
 
         src/pricing/StandardPricing.h
         src/pricing/IPricingStrategy.h
@@ -60,9 +56,6 @@ add_executable(StellarMerchant
         src/entities/Ship.cpp
         src/entities/Player.cpp
 
-        src/io/TerminalInput.cpp
-        src/io/TerminalRenderer.cpp
-
         src/pricing/StandardPricing.cpp
 
         src/systems/TravelSystem.cpp
@@ -73,7 +66,6 @@ add_executable(StellarMerchant
         src/world/StarSystem.cpp
         src/world/Galaxy.cpp
         src/world/map/RandomMapGenerator.cpp
-
 )
 
 target_include_directories(StellarMerchant PRIVATE
