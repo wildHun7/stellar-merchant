@@ -1,20 +1,28 @@
 #pragma once
 
+#include <QObject>
+#include "domain/ContextType.h"
+#include "domain/Result.h"
 #include "entities/Player.h"
 #include "world/Galaxy.h"
-#include "io/Command.h"
-#include <vector>
-#include <memory>
 
 namespace sm
+{
+    class IContext : public QObject
     {
-    class IContext
-    {
+        Q_OBJECT
     public:
+        explicit IContext(QObject* parent = nullptr) : QObject(parent) {}
         virtual ~IContext() = default;
 
-        virtual std::unique_ptr<IContext> update(Player& player, Galaxy& galaxy, int current_system_id) = 0;
-        virtual std::vector<Command> getAvailableActions() const = 0;
-        virtual bool wantsToQuit() const { return false; };
+    public slots:
+        virtual void onTravelRequested(Player& player, const Galaxy& galaxy, int current_system_id, int target_system_id) {}
+        virtual void onBuyRequested(Player& player, Planet& planet) {}
+        virtual void onSellRequested(Player& player, Planet& planet) {}
+
+    signals:
+        void contextChangeRequested(ContextType context_type);
+        void actionCompleted(const Result& result);
+        void stateChanged();
     };
 }

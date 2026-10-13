@@ -2,8 +2,6 @@
 
 #include "IContext.h"
 #include "systems/TradeSystem.h"
-#include "io/IInputHandler.h"
-#include "io/IRenderer.h"
 #include "world/Planet.h"
 
 namespace sm
@@ -11,17 +9,11 @@ namespace sm
     class CityContext : public IContext
     {
     public:
-        explicit CityContext(Planet& planet, IRenderer& renderer, IInputHandler& input);
+        explicit CityContext(Planet& planet);
         ~CityContext() = default;
-
-        std::unique_ptr<IContext> update(Player& player, Galaxy& galaxy, int current_system_id) override;
-        std::vector<Command> getAvailableActions() const override;
 
     private:
         TradeSystem m_trade_system;
         Planet& m_planet;
-        IRenderer& m_renderer;
-        IInputHandler& m_input;
-
     };
 }

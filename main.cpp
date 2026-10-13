@@ -1,28 +1,27 @@
 #include "core/GameApp.h"
-#include "io/TerminalRenderer.h"
-#include "io/TerminalInput.h"
-#include <windows.h>
+#include "io/GameWindow.h"
+#include <QApplication>
 
-int main()
+int main(int argc, char* argv[])
 {
-    SetConsoleOutputCP(CP_UTF8); // set UTF-8 in windows terminal
-    SetConsoleCP(CP_UTF8);
-    sm::GameApp app(
-        std::make_unique<sm::TerminalRenderer>(),
-        std::make_unique<sm::TerminalInput>()
-        );
-    app.run();
-    return 0;
-}
-    // Set up code that uses the Qt event loop here.
-    // Call a.quit() or a.exit() to quit the application.
-    // A not very useful example would be including
-    // #include <QTimer>
-    // near the top of the file and calling
-    // QTimer::singleShot(5000, &a, &QCoreApplication::quit);
-    // which quits the application after 5 seconds.
+    QApplication app(argc, argv);
 
-    // If you do not need a running Qt event loop, remove the call
-    // to a.exec() or use the Non-Qt Plain C++ Application template.
+    sm::GameWindow game_window;
+    sm::GameApp game_app{};
+
+    // GameWindow → GameApp (model update)
+    QObject::connect(&game_window, &sm::GameWindow::newGameRequested, &game_app, &sm::GameApp::onNewGame);
+    QObject::connect(&game_window, &sm::GameWindow::quitRequested, &game_app, &sm::GameApp::onQuit);
+    QObject::connect(&game_window, &sm::GameWindow::travelRequested, &game_app, &sm::GameApp::onTravelRequested);
+
+    // GameApp → GameWindow (GUI update)
+    QObject::connect(&game_app, &sm::GameApp::stateChanged, &game_window, &sm::GameWindow::onStateChanged);
+    QObject::connect(&game_app, &sm::GameApp::messageReceived, &game_window, &sm::GameWindow::onMessageReceived);
+
+    game_window.show();
+
+    return app.exec();
+}
+
 
 

@@ -1,29 +1,34 @@
 #pragma once
 
 #include "session/GameSession.h"
-#include "session/MenuSession.h"
-#include "io/IInputHandler.h"
-#include "io/IRenderer.h"
-#include <memory>
+#include <QObject>
+//#include <memory>
 #include <optional>
+#include <qwindowdefs.h>
 
 namespace sm
 {
-    class GameApp
+    class GameApp : public QObject
     {
-    public:
-        explicit GameApp(std::unique_ptr<IRenderer> renderer, std::unique_ptr<IInputHandler> input);
+        Q_OBJECT
 
-        void run();
+    public:
+        explicit GameApp(QObject* parent = nullptr);
+
+    public slots:
+        void onNewGame();
+        void onQuit();
+        void onTravelRequested();
+        //void onBuyRequested();
+        //void onSellRequested();
+        void onStateChanged(const Player& player, const Galaxy& galaxy, int current_system_id);
+        void onMessageReceived(const QString& message);
+
+    signals:
+        void stateChanged(const Player& player, const Galaxy& galaxy, int current_system_id);
+        void messageReceived(const QString& message);
 
     private:
-        std::unique_ptr<IRenderer> m_renderer;
-        std::unique_ptr<IInputHandler> m_input_handler;
-
-        MenuSession m_menu_session;
         std::optional<GameSession> m_game_session;
-        // std::optional<WorldSession> m_world_session; TODO
-
-
     };
 }

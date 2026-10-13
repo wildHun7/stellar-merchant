@@ -1,47 +1,42 @@
 #pragma once
 
-#include "domain/GameStatus.h"
+#include <QObject>
+#include <memory>
 #include "entities/Player.h"
 #include "world/Galaxy.h"
+#include "domain/GameStatus.h"
 #include "context/IContext.h"
-#include "io/IInputHandler.h"
-#include "io/IRenderer.h"
-#include <memory>
 
 namespace sm
 {
-    class GameSession
+    class GameSession : public QObject
     {
+        Q_OBJECT
+
     public:
-        explicit GameSession(Galaxy galaxy, Player player, IRenderer& renderer, IInputHandler& input_handler);
+        explicit GameSession(Player player, Galaxy galaxy, QObject* parent = nullptr);
 
-        void run();
-        [[nodiscard]] bool isRunning() const;
-        void switchContext(std::unique_ptr<IContext> context);
+    public slots:
+        void onTravelRequested(int target_system_id);
+        //void onBuyRequested();
+        //void onSellRequested();
+        void onContextChangeRequested(ContextType context_type);
+        void onActionCompleted(const Result& result);
+        void onStateChanged();
 
-        [[nodiscard]] const Galaxy& getGalaxy() const;
-        [[nodiscard]] Galaxy& getGalaxy();
-
-        [[nodiscard]] const Player& getPlayer() const;
-        [[nodiscard]] Player& getPlayer();
-
-        [[nodiscard]] GameStatus getGameStatus() const;
-        void setGameStatus(GameStatus game_status);
-
-        [[nodiscard]] int getCurrentSystemId() const;
-        void setCurrentSystemId(int id);
-
-        [[nodiscard]] int getTurn() const;
-        void nextTurn();
+    signals:
+        void stateChanged(const Player& player, const Galaxy& galaxy, int current_system_id);
+        void messageReceived(const QString& message);
+        void gameOver();
 
     private:
+        void switchContext(std::unique_ptr<IContext> context);
+
         Galaxy m_galaxy;
         Player m_player;
-        GameStatus m_game_status;
+        int m_current_system_id{0};
+        GameStatus m_status{GameStatus::Playing};
         std::unique_ptr<IContext> m_context;
-        IRenderer& m_renderer;
-        IInputHandler& m_input_handler;
-        int m_current_system_id;
-        int m_turn;
+
     };
 }

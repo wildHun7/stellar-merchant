@@ -1,49 +1,22 @@
 #include "TravelContext.h"
-#include "CityContext.h"
-#include "QuitContext.h"
+//#include "CityContext.h"
 
 namespace sm
 {
-    TravelContext::TravelContext(IRenderer& renderer, IInputHandler& input)
-        : m_renderer(renderer)
-        , m_input(input)
+    TravelContext::TravelContext(QObject* parent)
+        : IContext(parent)
     {   }
 
-    std::unique_ptr<IContext> TravelContext::update(Player& player, Galaxy& galaxy, int current_system_id)
+    void TravelContext::onTravelRequested(Player& player, const Galaxy& galaxy, int current_system_id, int target_system_id)
     {
-        m_renderer.renderState(player, galaxy, current_system_id);
-        m_renderer.renderAvailableActions(getAvailableActions());
-        Command cmd = m_input.getCommand();
+        auto result = m_travel_system.travel(player, galaxy, current_system_id, target_system_id);
 
-        switch(cmd) {
-            case Command::Travel:
-            {
-                int target_system_id = m_input.getSystemId();
-                auto result = m_travel_system.travel(player, galaxy, current_system_id, target_system_id);
-                m_renderer.renderMessage(result);
-                if (result.success)
-                    return std::make_unique<CityContext>(galaxy.getSystem(target_system_id).getPlanets()[0], m_renderer, m_input);
-                // TODO: planet generator
-                break;
-            }
+        emit actionCompleted(result);
 
-            case Command::Quit:
-            {
-                return std::make_unique<QuitContext>();
-                break;
-            }
+        if (result.success)
+            emit contextChangeRequested(ContextType::City);
 
-            default:
-            {
-                m_renderer.renderMessage({false, "Unknown command"});
-                break;
-            }
-        }
-    return nullptr;
+        emit stateChanged();
     }
 
-    std::vector<Command> TravelContext::getAvailableActions() const
-    {
-        return {Command::Travel, Command::Quit};
-    }
 }
