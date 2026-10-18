@@ -1,3 +1,4 @@
+#include <QDebug>
 #include "Player.h"
 
 namespace sm
@@ -5,7 +6,10 @@ namespace sm
     Player::Player(Ship ship)
     :   m_ship(std::move(ship))
     ,   m_credits(1000.0f)
-    {   }
+    {
+        qDebug() << "Player created, fuel:" << m_ship.getFuelAmount();
+        qDebug() << "Ship capacity:" << m_ship.getMaxMass();
+    }
 
     // Ship
 

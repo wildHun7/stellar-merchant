@@ -19,8 +19,8 @@ namespace sm
         void onNewGame();
         void onQuit();
         void onTravelRequested();
-        //void onBuyRequested();
-        //void onSellRequested();
+        void onBuyRequested();
+        void onSellRequested();
         void onStateChanged(const Player& player, const Galaxy& galaxy, int current_system_id);
         void onMessageReceived(const QString& message);
 

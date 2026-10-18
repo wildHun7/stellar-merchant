@@ -6,6 +6,7 @@
 #include "world/Galaxy.h"
 #include "domain/GameStatus.h"
 #include "context/IContext.h"
+#include "pricing/StandardPricing.h"
 
 namespace sm
 {
@@ -14,12 +15,16 @@ namespace sm
         Q_OBJECT
 
     public:
-        explicit GameSession(Player player, Galaxy galaxy, QObject* parent = nullptr);
+        explicit GameSession(QObject* parent = nullptr);
+
+        [[nodiscard]] Planet& getCurrentPlanet();
+        [[nodiscard]] const Planet& getCurrentPlanet() const;
 
     public slots:
+        void initialize();
         void onTravelRequested(int target_system_id);
-        //void onBuyRequested();
-        //void onSellRequested();
+        void onBuyRequested(Commodity commodity, int quantity);
+        void onSellRequested(Commodity commodity, int quantity);
         void onContextChangeRequested(ContextType context_type);
         void onActionCompleted(const Result& result);
         void onStateChanged();
@@ -32,11 +37,12 @@ namespace sm
     private:
         void switchContext(std::unique_ptr<IContext> context);
 
-        Galaxy m_galaxy;
+        StandardPricing m_pricing;
         Player m_player;
+        Galaxy m_galaxy;        
         int m_current_system_id{0};
+        int m_current_planet_id{0}; // TODO: player choice
         GameStatus m_status{GameStatus::Playing};
         std::unique_ptr<IContext> m_context;
-
     };
 }

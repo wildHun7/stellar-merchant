@@ -1,11 +1,12 @@
 #include "RandomMapGenerator.h"
+#include "world/Market.h"
 #include <random>
 #include <format>
 #include <algorithm>
 
 namespace sm
 {
-    Galaxy RandomMapGenerator::generateGalaxy(int system_count, unsigned int seed) const
+    Galaxy RandomMapGenerator::generateGalaxy(int system_count, unsigned int seed, IPricingStrategy& pricing) const
     {
         std::mt19937 gen(seed);
 
@@ -18,7 +19,7 @@ namespace sm
 
         Galaxy galaxy;
 
-        // generate solar systems
+        //  1. generate solar systems
         for(int i = 0; i < system_count; ++i)
         {
             // float x = pos_dist(gen);
@@ -31,7 +32,7 @@ namespace sm
             galaxy.addSystem(std::move(system));
         }
 
-        // connect systems
+        // 2. connect systems
         constexpr int K = 4;
 
         for(int i = 0; i < system_count; ++i)
@@ -57,11 +58,11 @@ namespace sm
 
             for (int k = 0; k < neighbours; ++k)
             {
-                galaxy.addEdge(i, distances[k].second, distances[k].first); // arg: from_id, to_id, cost
+                galaxy.addEdge(i, distances[k].second, distances[k].first); // arg: from_id, to_id, dist
             }
         }
 
-        // set Capital
+        // 3. set capital
         Position center{30.0f, 5.0f};
         int capital_id = 0;
         float max_dist = 0.0f;
@@ -81,6 +82,26 @@ namespace sm
         }
 
         galaxy.setCapitalId(capital_id);
+
+        // 4. generate planets
+        std::uniform_int_distribution<int> planet_count_range(1, 3); // up to 3 planets in the system
+        std::uniform_int_distribution<int> planet_type_range(0, 4);  // 5 planet type
+
+        for (int i = 0; i < system_count; ++i)
+        {
+            int count = planet_count_range(gen);
+            auto& system = galaxy.getSystem(i);
+
+            for (int p = 0; p < count; ++p)
+            {
+                PlanetType type = static_cast<PlanetType>(planet_type_range(gen));
+                std::string name = std::format("Planet_{}-{}", i, p);
+                float dist_from_capital = galaxy.getSystem(galaxy.getCapitalID()).getPosition().x; // TODO: real distance
+
+                Market market(type, dist_from_capital, pricing, seed);
+                system.getPlanets().emplace_back(name, type, std::move(market));
+            }
+        }
 
         return galaxy;
     }

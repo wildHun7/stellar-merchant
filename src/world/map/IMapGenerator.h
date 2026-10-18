@@ -9,6 +9,6 @@ namespace sm
     public:
         virtual ~IMapGenerator() = default;
 
-        virtual Galaxy generateGalaxy(int system_count, unsigned int seed) const = 0;
+        virtual Galaxy generateGalaxy(int system_count, unsigned int seed, IPricingStrategy& pricing) const = 0;
     };
 }

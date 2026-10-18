@@ -11,7 +11,7 @@ set(CMAKE_AUTORCC ON)
 
 find_package(Qt6 REQUIRED COMPONENTS Core Widgets)
 
-add_executable(StellarMerchant
+add_executable(StellarMerchant WIN32
     main.cpp
 
     src/io/Command.h
@@ -28,7 +28,6 @@ add_executable(StellarMerchant
     src/context/IContext.h
     src/context/CityContext.h
     src/context/TravelContext.h
-    src/context/QuitContext.h
     src/context/CityContext.cpp
     src/context/TravelContext.cpp
 

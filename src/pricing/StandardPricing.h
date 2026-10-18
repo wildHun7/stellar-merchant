@@ -12,7 +12,7 @@ namespace sm
     public:
         ~StandardPricing() = default;
 
-        int calculatePrice(Commodity cmdty_type, PlanetType planet, float dist) const override;
+        int calculateLocalBasePrice(Commodity cmdty_type, PlanetType planet, float dist) const override;
 
     private:
         //std::mt19937 m_gen;

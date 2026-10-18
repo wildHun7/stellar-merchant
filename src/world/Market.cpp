@@ -29,7 +29,7 @@ namespace sm
         std::uniform_real_distribution<float> noise(0.8f, 1.2f);
 
         std::ranges::for_each(kCommodities, [&](const CommodityInfo& info){
-            float base = m_pricing.calculatePrice(info.type, m_planet_type, m_dist_from_capital);
+            float base = m_pricing.calculateLocalBasePrice(info.type, m_planet_type, m_dist_from_capital);
             m_prices[info.type] = static_cast<int>(base * noise(m_gen));
         });
     }

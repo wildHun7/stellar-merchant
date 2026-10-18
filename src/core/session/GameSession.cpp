@@ -1,19 +1,54 @@
 #include <QDebug>
 #include "GameSession.h"
 #include "context/TravelContext.h"
-//#include "context/CityContext.h"
+#include "context/CityContext.h"
+#include "world/map/RandomMapGenerator.h"
 
 namespace sm
 {
-    GameSession::GameSession(Player player, Galaxy galaxy, QObject* parent)
-    :   m_galaxy(std::move(galaxy))
-    ,   m_player(std::move(player))
+    GameSession::GameSession(QObject* parent)
+    :   QObject(parent)
+    ,   m_pricing()
+    ,   m_player{Ship(ShipType::Shuttle)} // TODO: ship type selection
+    ,   m_galaxy(RandomMapGenerator{}.generateGalaxy(10, 42, m_pricing))
     ,   m_current_system_id(0)
     {
-        [[maybe_unused]] bool fueled = m_player.getShip().addCommodity(Commodity::Deuterium, 70);
+        qDebug() << "GameSession body start";
+        qDebug() << "player credits:" << m_player.getCredits();
+        qDebug() << "ship capacity:" << m_player.getShip().getMaxMass();
+        [[maybe_unused]] bool fueled = m_player.getShip().addCommodity(Commodity::Deuterium, 50);
+        qDebug() << "fueled:" << fueled;
+        qDebug() << "fuel amount:" << m_player.getShip().getFuelAmount();
         qDebug() << "Calling switchContext...";
         switchContext(std::make_unique<TravelContext>());
         qDebug() << "switchContext done!";
+    }
+
+    Planet& GameSession::getCurrentPlanet()
+    {
+        qDebug() << "System planets count:" << m_galaxy.getSystem(m_current_system_id).getPlanets().size();
+        return m_galaxy.getSystem(m_current_system_id).getPlanets()[m_current_planet_id];
+    }
+
+    const Planet& GameSession::getCurrentPlanet() const
+    {
+        qDebug() << "System planets count:" << m_galaxy.getSystem(m_current_system_id).getPlanets().size();
+        return m_galaxy.getSystem(m_current_system_id).getPlanets()[m_current_planet_id];
+    }
+
+    void GameSession::initialize()
+    {
+        emit stateChanged(m_player, m_galaxy, m_current_system_id);
+    }
+
+    void GameSession::onBuyRequested(Commodity commodity, int quantity)
+    {
+        m_context->onBuyRequested(m_player, getCurrentPlanet(), commodity, quantity);
+    }
+
+    void GameSession::onSellRequested(Commodity commodity, int quantity)
+    {
+        m_context->onSellRequested(m_player, getCurrentPlanet(), commodity, quantity);
     }
 
     void GameSession::onTravelRequested(int target_system_id)
@@ -29,11 +64,12 @@ namespace sm
                 switchContext(std::make_unique<TravelContext>());
                 break;
             case ContextType::City:
-                //switchContext(std::make_unique<CityContext>());
+                switchContext(std::make_unique<CityContext>(getCurrentPlanet()));
                 break;
             default:
                 break;
         }
+        emit stateChanged(m_player, m_galaxy, m_current_system_id);
     }
 
     void GameSession::onActionCompleted(const Result& result)
@@ -43,6 +79,7 @@ namespace sm
 
     void GameSession::onStateChanged()
     {
+        qDebug() << "GameSession::onStateChanged called!";
         emit stateChanged(m_player, m_galaxy, m_current_system_id);
     }
 

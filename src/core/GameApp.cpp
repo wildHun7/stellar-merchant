@@ -3,9 +3,7 @@
 #include <QDebug>
 #include "GameApp.h"
 #include "world/Galaxy.h"
-#include "world/map/RandomMapGenerator.h"
 #include "entities/Player.h"
-#include "entities/Ship.h"
 
 namespace sm
 {
@@ -16,13 +14,8 @@ namespace sm
     void GameApp::onNewGame()
     {
         qDebug() << "onNewGame called!";
-        RandomMapGenerator map_generator;
-        Galaxy galaxy = map_generator.generateGalaxy(10, 42);
-        ShipType ship_type = ShipType::Freighter; // temp hardcoded TODO
-        Player player{Ship(ship_type)}; // most vexing perse
-
         qDebug() << "Creating GameSession...";
-        m_game_session.emplace(std::move(player), std::move(galaxy), this);
+        m_game_session.emplace(this);
         qDebug() << "GameSession created!";
 
         connect(&m_game_session.value(), &GameSession::stateChanged,
@@ -31,6 +24,8 @@ namespace sm
                 this, &GameApp::onMessageReceived);
         connect(&m_game_session.value(), &GameSession::gameOver,
                 this, &GameApp::onQuit);
+
+        m_game_session->initialize();
     }
 
     void GameApp::onQuit()
@@ -57,6 +52,70 @@ namespace sm
         if (ok && m_game_session) {
             m_game_session->onTravelRequested(target_system_id);
         }
+    }
+
+    void GameApp::onBuyRequested()
+    {
+        QStringList commodities;
+        commodities << "Cybernetics" << "Deuterium" << "HydroRations" << "RareOre" << "Stardust";
+
+        bool ok;
+        QString selected = QInputDialog::getItem(
+            nullptr,
+            tr("Buy Commodity"),
+            tr("Select commodity:"),
+            commodities,
+            0,
+            false,
+            &ok
+            );
+
+        if (!ok) return;
+
+        Commodity commodity = static_cast<Commodity>(commodities.indexOf(selected));
+
+        // 2. pobierz quantity
+        int quantity = QInputDialog::getInt(
+            nullptr,
+            tr("Quantity"),
+            tr("Enter quantity:"),
+            1, 1, 100, 1, &ok
+            );
+
+        if (ok && m_game_session)
+            m_game_session->onBuyRequested(commodity, quantity);
+    }
+
+    void GameApp::onSellRequested()
+    {
+        QStringList commodities;
+        commodities << "Cybernetics" << "Deuterium" << "HydroRations" << "RareOre" << "Stardust";
+
+        bool ok;
+        QString selected = QInputDialog::getItem(
+            nullptr,
+            tr("Sell Commodity"),
+            tr("Select commodity:"),
+            commodities,
+            0,
+            false,
+            &ok
+            );
+
+        if (!ok) return;
+
+        Commodity commodity = static_cast<Commodity>(commodities.indexOf(selected));
+
+        // 2. pobierz quantity
+        int quantity = QInputDialog::getInt(
+            nullptr,
+            tr("Quantity"),
+            tr("Enter quantity:"),
+            1, 1, 100, 1, &ok
+            );
+
+        if (ok && m_game_session)
+            m_game_session->onSellRequested(commodity, quantity);
     }
 
     void GameApp::onStateChanged(const Player& player, const Galaxy& galaxy, int current_system_id)

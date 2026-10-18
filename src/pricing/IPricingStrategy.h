@@ -10,6 +10,6 @@ namespace sm
     public:
         virtual ~IPricingStrategy() = default;
 
-        virtual int calculatePrice(Commodity cmdty_type, PlanetType planet, float dist) const = 0;
+        virtual int calculateLocalBasePrice(Commodity cmdty_type, PlanetType planet, float dist) const = 0;
     };
 }

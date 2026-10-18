@@ -17,8 +17,8 @@ namespace sm
 
     public slots:
         virtual void onTravelRequested(Player& player, const Galaxy& galaxy, int current_system_id, int target_system_id) {}
-        virtual void onBuyRequested(Player& player, Planet& planet) {}
-        virtual void onSellRequested(Player& player, Planet& planet) {}
+        virtual void onBuyRequested(Player& player, Planet& planet, sm::Commodity commodity, int quantity) {}
+        virtual void onSellRequested(Player& player, Planet& planet, sm::Commodity commodity, int quantity) {}
 
     signals:
         void contextChangeRequested(ContextType context_type);

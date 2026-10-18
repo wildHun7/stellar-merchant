@@ -1,5 +1,5 @@
+#include <QDebug>
 #include "TravelContext.h"
-//#include "CityContext.h"
 
 namespace sm
 {

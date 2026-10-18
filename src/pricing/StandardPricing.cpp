@@ -16,7 +16,7 @@ inline constexpr std::array<std::array<float, 5>, 5> kPlanetMultipliers
 
 namespace sm
 {
-    int StandardPricing::calculatePrice(Commodity type, PlanetType planet, float dist) const
+    int StandardPricing::calculateLocalBasePrice(Commodity type, PlanetType planet, float dist) const
     {
         const auto& info = getCommodityInfo(type);
         float price = info.base_price;

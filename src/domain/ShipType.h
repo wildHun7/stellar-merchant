@@ -22,9 +22,9 @@ namespace sm
 
     inline constexpr std::array<ShipInfo, 3> kShips
     {{
-        { ShipType::Shuttle,     "Shuttle",     50.0f,  1.0f },
-        { ShipType::Freighter,   "Freighter",  150.0f,  2.0f },
-        { ShipType::Interceptor, "Interceptor", 80.0f,  0.5f },
+        { ShipType::Shuttle,     "Shuttle",     100.0f,  1.0f },
+        { ShipType::Freighter,   "Freighter",  200.0f,  2.0f },
+        { ShipType::Interceptor, "Interceptor", 150.0f,  0.5f },
     }};
 
     constexpr const ShipInfo& getShipInfo(ShipType type)
