@@ -6,33 +6,24 @@
 
 namespace sm
 {
-    GameSession::GameSession(QObject* parent)
+    GameSession::GameSession(ShipType ship_type, QObject* parent)
     :   QObject(parent)
     ,   m_pricing()
-    ,   m_player{Ship(ShipType::Shuttle)} // TODO: ship type selection
+    ,   m_player{Ship(ship_type)}
     ,   m_galaxy(RandomMapGenerator{}.generateGalaxy(10, 42, m_pricing))
     ,   m_current_system_id(0)
     {
-        qDebug() << "GameSession body start";
-        qDebug() << "player credits:" << m_player.getCredits();
-        qDebug() << "ship capacity:" << m_player.getShip().getMaxMass();
         [[maybe_unused]] bool fueled = m_player.getShip().addCommodity(Commodity::Deuterium, 50);
-        qDebug() << "fueled:" << fueled;
-        qDebug() << "fuel amount:" << m_player.getShip().getFuelAmount();
-        qDebug() << "Calling switchContext...";
         switchContext(std::make_unique<TravelContext>());
-        qDebug() << "switchContext done!";
     }
 
     Planet& GameSession::getCurrentPlanet()
     {
-        qDebug() << "System planets count:" << m_galaxy.getSystem(m_current_system_id).getPlanets().size();
         return m_galaxy.getSystem(m_current_system_id).getPlanets()[m_current_planet_id];
     }
 
     const Planet& GameSession::getCurrentPlanet() const
     {
-        qDebug() << "System planets count:" << m_galaxy.getSystem(m_current_system_id).getPlanets().size();
         return m_galaxy.getSystem(m_current_system_id).getPlanets()[m_current_planet_id];
     }
 
@@ -79,7 +70,6 @@ namespace sm
 
     void GameSession::onStateChanged()
     {
-        qDebug() << "GameSession::onStateChanged called!";
         emit stateChanged(m_player, m_galaxy, m_current_system_id);
     }
 

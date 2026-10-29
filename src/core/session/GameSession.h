@@ -15,7 +15,7 @@ namespace sm
         Q_OBJECT
 
     public:
-        explicit GameSession(QObject* parent = nullptr);
+        explicit GameSession(ShipType ship_type, QObject* parent = nullptr);
 
         [[nodiscard]] Planet& getCurrentPlanet();
         [[nodiscard]] const Planet& getCurrentPlanet() const;

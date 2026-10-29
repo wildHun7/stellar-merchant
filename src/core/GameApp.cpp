@@ -11,11 +11,11 @@ namespace sm
     :   QObject(parent)
     {   }
 
-    void GameApp::onNewGame()
+    void GameApp::onGameStartRequested(ShipType type)
     {
         qDebug() << "onNewGame called!";
         qDebug() << "Creating GameSession...";
-        m_game_session.emplace(this);
+        m_game_session.emplace(type, this);
         qDebug() << "GameSession created!";
 
         connect(&m_game_session.value(), &GameSession::stateChanged,
@@ -35,8 +35,6 @@ namespace sm
 
     void GameApp::onTravelRequested()
     {
-        qDebug() << "onTravelRequested called!";
-        qDebug() << "game_session exists:" << m_game_session.has_value();
         bool ok;
         int target_system_id = QInputDialog::getInt(
             nullptr,

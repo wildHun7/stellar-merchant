@@ -1,6 +1,7 @@
 #pragma once
 
 #include "session/GameSession.h"
+#include "domain/ShipType.h"
 #include <QObject>
 //#include <memory>
 #include <optional>
@@ -16,7 +17,7 @@ namespace sm
         explicit GameApp(QObject* parent = nullptr);
 
     public slots:
-        void onNewGame();
+        void onGameStartRequested(ShipType type);
         void onQuit();
         void onTravelRequested();
         void onBuyRequested();
