@@ -19,11 +19,9 @@ add_executable(StellarMerchant WIN32
     src/io/GameWindow.cpp
 
     src/core/GameApp.h
-    src/core/session/MenuSession.h
     src/core/session/GameSession.h
     src/core/GameApp.cpp
     src/core/session/GameSession.cpp
-    src/core/session/MenuSession.cpp
 
     src/context/IContext.h
     src/context/CityContext.h
