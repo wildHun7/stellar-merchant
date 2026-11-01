@@ -42,7 +42,7 @@ namespace sm
             tr("Enter System ID:"),
             0,                  // def
             0,                  // min
-            10,                 // max
+            9,                 // max
             1,                  // Krok zmiany (step)
             &ok
             );
@@ -77,7 +77,7 @@ namespace sm
             nullptr,
             tr("Quantity"),
             tr("Enter quantity:"),
-            1, 1, 100, 1, &ok
+            1, 1, 30, 1, &ok
             );
 
         if (ok && m_game_session)

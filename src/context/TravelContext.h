@@ -9,12 +9,13 @@ namespace sm
     {
         Q_OBJECT
     public:
-        explicit TravelContext(QObject* parent = nullptr);
+        explicit TravelContext(int target_system_id, QObject* parent = nullptr);
 
     public slots:
-        void onTravelRequested(sm::Player& player, const sm::Galaxy& galaxy, int current_system_id, int target_system_id) override;
+        void onEnter(Player& player, const Galaxy& galaxy, int current_system_id) override;
 
     private:
         TravelSystem m_travel_system;
+        int m_target_system_id;
     };
 }

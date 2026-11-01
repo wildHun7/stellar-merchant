@@ -25,6 +25,8 @@ namespace sm
         void onTravelRequested(int target_system_id);
         void onBuyRequested(Commodity commodity, int quantity);
         void onSellRequested(Commodity commodity, int quantity);
+        void onDepartureRequested(int target_system_id);
+        void onSystemChanged(int system_id);
         void onContextChangeRequested(ContextType context_type);
         void onActionCompleted(const Result& result);
         void onStateChanged();

@@ -15,6 +15,8 @@ namespace sm
         explicit IContext(QObject* parent = nullptr) : QObject(parent) {}
         virtual ~IContext() = default;
 
+        virtual void onEnter(Player&, const Galaxy&, int /*current_system_id*/) {}
+
     public slots:
         virtual void onTravelRequested(Player& player, const Galaxy& galaxy, int current_system_id, int target_system_id) {}
         virtual void onBuyRequested(Player& player, Planet& planet, sm::Commodity commodity, int quantity) {}
@@ -22,6 +24,8 @@ namespace sm
 
     signals:
         void contextChangeRequested(ContextType context_type);
+        void departureRequested(int target_system_id);
+        void systemChanged(int system_id);
         void actionCompleted(const Result& result);
         void stateChanged();
     };

@@ -8,9 +8,9 @@ namespace sm
     {   }
 
 
-    void CityContext::onTravelRequested(sm::Player&, const sm::Galaxy&, int, int )
+    void CityContext::onTravelRequested(sm::Player&, const sm::Galaxy&, int, int target_system_id)
     {
-        emit contextChangeRequested(ContextType::Travel);
+        emit departureRequested(target_system_id);
     }
 
     void CityContext::onBuyRequested(sm::Player& player, sm::Planet& planet, sm::Commodity commodity, int quantity)
